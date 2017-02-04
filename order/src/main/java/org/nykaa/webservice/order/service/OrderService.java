@@ -1,28 +1,28 @@
 package org.nykaa.webservice.order.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.nykaa.webservice.order.model.Order;
+import org.nykaa.webservice.order.model.OrderCollection;
 
 public class OrderService {
 	
-	private List<Order> list;
+	private OrderCollection orderCollection;
 	
 	public OrderService(){
-		this.list = new ArrayList<>();
-		Order ord1 = new Order("NW00013", "400023", 78.79, "COD", "2");
-		Order ord2 = new Order("NW00014", "400024", 73.69, "Net Banking", "1");
-		this.list.add(ord1);
-		this.list.add(ord2);
+		Order order = new Order(345678, "400023", 78.79, "COD", "2");
+		this.orderCollection = new OrderCollection();
+		this.orderCollection.addOrder(order);
+	}
+
+	public OrderCollection getOrderCollection() {
+		return this.orderCollection;
+	}
+
+	public void setOrderCollection(OrderCollection orderCollection) {
+		this.orderCollection = orderCollection;
 	}
 	
-	public List<Order> getAllOrders(){
-		return this.list;
-	} 
-	
 	public void addOrder(Order order){
-		this.list.add(order);
+		this.orderCollection.addOrder(order);
 	}
 
 }

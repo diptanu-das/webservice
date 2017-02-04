@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="order")
 public class Order {
 	
-	private String orderId;
+	private long orderId;
 	private String userId;
 	
 	private double totalCost;
@@ -18,6 +18,17 @@ public class Order {
 	private String shipMethodId;
 	
 	private Date createdAt;
+
+	public Order(){}
+	
+	public Order(long oId, String uId, double tCost, String pMethod, String sMethodId){
+		this.orderId = oId;
+		this.userId = uId;
+		this.totalCost = tCost;
+		this.paymentMethod = pMethod;
+		this.shipMethodId = sMethodId;	
+		this.createdAt = new Date();
+	}
 	
 	public Date getCreatedAt() {
 		return createdAt;
@@ -28,23 +39,12 @@ public class Order {
 		this.createdAt = createdAt;
 	}
 
-	public Order(){}
-	
-	public Order(String oId, String uId, double tCost, String pMethod, String sMethodId){
-		this.orderId = oId;
-		this.userId = uId;
-		this.totalCost = tCost;
-		this.paymentMethod = pMethod;
-		this.shipMethodId = sMethodId;	
-		this.createdAt = new Date();
-	}
-
-	public String getOrderId() {
+	public long getOrderId() {
 		return orderId;
 	}
 
 	@XmlAttribute
-	public void setOrderId(String orderId) {
+	public void setOrderId(long orderId) {
 		this.orderId = orderId;
 	}
 
